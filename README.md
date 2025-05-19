@@ -1,8 +1,5 @@
 # DevOps
-
-td docker
-
-TP1 01 - Docker 
+# TP1 01 - Docker 
 1-1 : utiliser -e lors de la création du container, permet de ne pas stocker les variables d'environnement dans l'image, limitant leur accès dans le but de renforcer la sécurité. On peut toujours les modifier sans avoir besoin de reconstruire l'image. 
 
 1-2 : nous avons besoin d'un volume car le container est éphemère donc si je le supprime toutes les données le seront aussi. Le fait de créer un volume afin de stocker les données de notre container. 
