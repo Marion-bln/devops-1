@@ -1,0 +1,43 @@
+version: '3.9'
+
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: backend-api
+    networks:
+      - app-network
+      - app-network2
+    depends_on:
+      - database
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/db
+      DB_USERNAME: usr
+      DB_PASSWORD: pwd
+
+  database:
+    build:
+      context: ./database
+    container_name: postgres
+    networks:
+      - app-network
+    volumes:
+      - TP1_postgres_data:/var/lib/postgresql/data
+
+  httpd:
+    build:
+      context: ./http-server
+    container_name: apache-server
+    ports:
+      - "80:80"
+    networks:
+      - app-network2
+    depends_on:
+      - backend
+
+networks:
+  app-network:
+  app-network2:
+
+volumes:
+  TP1_postgres_data:
