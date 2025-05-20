@@ -11,9 +11,9 @@ services:
     depends_on:
       - database
     environment:
-      DB_URL: jdbc:postgresql://postgres:5432/db
-      DB_USERNAME: usr
-      DB_PASSWORD: pwd
+      DB_URL: ${DB_URL}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
 
   database:
     build:
