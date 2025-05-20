@@ -62,3 +62,9 @@ docker push marionbln/tp1_postgres-database:1.0 --> publication de l'image dans 
 déja, le fichier pom.xml (Project Object Model), permet de : décrire les informations du projet, les dépendances, les propriétés du projet aussi. 
 Et donc les testcontainers, sont des librairies java libres de sources, et permet de lancer des conteneurs Dockers pour les tests. En fait, ca crée un conteneur "temporaire" avec une base de données postgres (sans avoir besoin au préalable de la configurer). Ainsi, on peut faire des tests plus facilement. 
 
+2-2 : Les variables sécurisées dans Github Actions, permettent de protégé les données sensibles comme par exemple : le nom d'utilisateur, le mot de passe, les clés API. Au lieu de les mettres dans le fichier main.yml. 
+
+2-3 : Cette ligne : needs: build-and-test-backend, que la deuxième partie (build + push les images) ne doit se faire que si le build and test backend (que l'on a fait avant) fonctionne ! Cela permet de ne pas publier d'image docker qui ne fonctionne pas, déployer un truc qui ne fonctionne pas ou faire tout bug. 
+
+2-4 : On a besoin de push les images car le but est de rendre accesibles nos images aux autres développeurs dans notre docker hub en public. 
+
