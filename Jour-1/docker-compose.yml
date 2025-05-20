@@ -1,14 +1,14 @@
 services:
   backend:
     build:
-      context: ./backend
-    container_name: backend-api
-    networks:
+      context: ./backend #constrcution de l'image à l'aide du dossier backend 
+    container_name: backend-api #nom du conteneur au lancement 
+    networks: #je met les deux réseaux avec lesquels il communique 
       - app-network
-      - app-network2
+      - app-network2 
     depends_on:
-      - database
-    environment:
+      - database #on attend que le conteneur de la base de données soit lancé avant de lancer le conteneur backend
+    environment: #les variables se trouvent dans un fichier .env pour augmenter la sécurité
       DB_URL: ${DB_URL}
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
@@ -22,7 +22,7 @@ services:
     networks:
       - app-network
     volumes:
-      - TP1_postgres_data:/var/lib/postgresql/data
+      - TP1_postgres_data:/var/lib/postgresql/data #permet la persistance des données
     restart: 
       unless-stopped
 
@@ -35,7 +35,7 @@ services:
     networks:
       - app-network2
     depends_on:
-      - backend
+      - backend #on attend le lancement du backend avant le serveur http 
     restart: 
       no 
 
