@@ -57,3 +57,8 @@ docker push marionbln/tp1_postgres-database:1.0 --> publication de l'image dans 
 
  
 
+## TP2 - Github Actions
+2-1 : À quoi servent les testcontainers dans le fichier pom.xml ? 
+déja, le fichier pom.xml (Project Object Model), permet de : décrire les informations du projet, les dépendances, les propriétés du projet aussi. 
+Et donc les testcontainers, sont des librairies java libres de sources, et permet de lancer des conteneurs Dockers pour les tests. En fait, ca crée un conteneur "temporaire" avec une base de données postgres (sans avoir besoin au préalable de la configurer). Ainsi, on peut faire des tests plus facilement. 
+
