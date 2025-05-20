@@ -24,7 +24,7 @@ services:
     volumes:
       - TP1_postgres_data:/var/lib/postgresql/data
     restart: 
-      on-failure:3
+      unless-stopped
 
   httpd:
     build:
@@ -37,7 +37,7 @@ services:
     depends_on:
       - backend
     restart: 
-      on-failure:3
+      no 
 
 networks:
   app-network:
