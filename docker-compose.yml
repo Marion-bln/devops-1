@@ -12,6 +12,8 @@ services:
       DB_URL: ${DB_URL}
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
+    restart: 
+      on-failure:3
 
   database:
     build:
@@ -21,6 +23,8 @@ services:
       - app-network
     volumes:
       - TP1_postgres_data:/var/lib/postgresql/data
+    restart: 
+      on-failure:3
 
   httpd:
     build:
@@ -32,6 +36,8 @@ services:
       - app-network2
     depends_on:
       - backend
+    restart: 
+      on-failure:3
 
 networks:
   app-network:

@@ -45,5 +45,15 @@ docker run \
                                                 docker-compose restart --> relance les containers
                                                 docker-compose stop --> arrête et supprime les containers
 
+1-9 : - docker login --> connecte à docker HUB
+docker tag tp1_postgres-database marionbln/tp1_postgres-database:1.0 --> tag de l'image
+docker push marionbln/tp1_postgres-database:1.0 --> publication de l'image dans mon docker HUB
+
+1-10 : Si je publie les images cela permet : 
+- que d'autres développeurs aient accès à mes images, 
+- de déployer l'image sur d'autres machine 
+- de pouvoir versionner les images 
+
+
  
 
