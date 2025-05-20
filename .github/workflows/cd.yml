@@ -1,16 +1,16 @@
 name: CD - Docker publish
 
 on:
-  workflow_run:
-    workflows: ["CI - Test backend"]  
-    types:
-      - completed
+  push:
     branches:
       - main
+  workflow_run:
+    workflows: ["CI devops 2025"] 
+    types:
+      - completed
 
 jobs:
   build-and-push-docker-image:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-24.04
 
     steps:
@@ -26,27 +26,20 @@ jobs:
       - name: Build image and push backend (simpleapi)
         uses: docker/build-push-action@v6
         with:
-          # relative path to the place where source code with Dockerfile is located
           context: ./Jour-1/simpleapi
-          # Note: tags has to be all lower-case
-          tags:  ${{secrets.DOCKER_USERNAME}}/tp-postgres-simpleapi:latest
-          push: ${{ github.ref == 'refs/heads/main' }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/tp-postgres-simpleapi:latest
+          push: true
 
       - name: Build image and push database
         uses: docker/build-push-action@v6
         with:
-          # relative path to the place where source code with Dockerfile is located
           context: ./Jour-1/backend
-          # Note: tags has to be all lower-case
-          tags:  ${{secrets.DOCKER_USERNAME}}/tp-postgres-database:latest
-          push: ${{ github.ref == 'refs/heads/main' }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/tp-postgres-database:latest
+          push: true
 
       - name: Build image and push httpd
         uses: docker/build-push-action@v6
         with:
-          # relative path to the place where source code with Dockerfile is located
           context: ./Jour-1/backend
-          # Note: tags has to be all lower-case
-          tags:  ${{secrets.DOCKER_USERNAME}}/tp-postgres-httpd:latest
-          push: ${{ github.ref == 'refs/heads/main' }}
-
+          tags: ${{ secrets.DOCKER_USERNAME }}/tp-postgres-httpd:latest
+          push: true
