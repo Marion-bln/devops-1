@@ -9,11 +9,11 @@ services:
     depends_on:
       - database #on attend que le conteneur de la base de données soit lancé avant de lancer le conteneur backend
     environment: #les variables se trouvent dans un fichier .env pour augmenter la sécurité
-      DB_URL: ${DB_URL}
-      DB_USERNAME: ${DB_USERNAME}
-      DB_PASSWORD: ${DB_PASSWORD}
-    restart: 
-      on-failure:3
+      SPRING_DATASOURCE_URL: ${DB_URL}
+      SPRING_DATASOURCE_USERNAME: ${DB_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+
+    restart: on-failure:3
 
   database:
     build:
