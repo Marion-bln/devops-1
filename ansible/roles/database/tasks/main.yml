@@ -1,8 +1,7 @@
 - name: Run PostgreSQL container
   docker_container:
     name: postgres
-    image: postgres:13
-    state: started
+    image: marionbln/tp-database
     restart_policy: unless-stopped
     networks:
       - name: app-network

@@ -1,15 +1,18 @@
 - name: Run backend API container
   docker_container:
     name: backend-api
-    image: marionbln/tp-postgres-simpleapi:latest 
+    image: marionbln/tp-simpleapi:latest
     pull: yes   # ← Image DockerHub
     state: started
     restart_policy: on-failure
     networks:
       - name: app-network
       - name: app-network2
-    env:
-      DB_URL: jdbc:postgresql://postgres:5432/mydb
-      DB_USERNAME: usr
-      DB_PASSWORD: pwd
+      
+    depends_on:
+      - database
+    environment: #les variables se trouvent dans un fichier .env pour augmenter la sécurité
+      SPRING_DATASOURCE_URL: ${DB_URL}
+      SPRING_DATASOURCE_USERNAME: ${DB_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
   

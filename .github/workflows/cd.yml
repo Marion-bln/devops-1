@@ -7,7 +7,7 @@ on:
   workflow_run:
     workflows: ["CI devops 2025"] 
     types:
-      - completed
+      - completed  
 
 jobs:
   build-and-push-docker-image:
@@ -43,6 +43,4 @@ jobs:
           context: ./Jour-1/http-server
           tags: ${{ secrets.DOCKER_USERNAME }}/tp-httpd:latest
           push: true
-
-
-
+          

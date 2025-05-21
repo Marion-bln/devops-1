@@ -34,3 +34,4 @@ jobs:
         run: mvn -B verify sonar:sonar -Dsonar.projectKey=Marion-bln_devops-1 -Dsonar.organization=marionbln -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN --file ./pom.xml
 
 
+
