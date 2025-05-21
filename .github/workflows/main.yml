@@ -67,7 +67,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           # relative path to the place where source code with Dockerfile is located
-          context: ./Jour-1/backend
+          context: ./Jour-1/database
           # Note: tags has to be all lower-case
           tags:  ${{secrets.DOCKER_USERNAME}}/tp-postgres-database:latest
           push: ${{ github.ref == 'refs/heads/main' }}
@@ -76,7 +76,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           # relative path to the place where source code with Dockerfile is located
-          context: ./Jour-1/backend
+          context: ./Jour-1/http-server
           # Note: tags has to be all lower-case
           tags:  ${{secrets.DOCKER_USERNAME}}/tp-postgres-httpd:latest
           push: ${{ github.ref == 'refs/heads/main' }}
