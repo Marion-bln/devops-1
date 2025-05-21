@@ -68,3 +68,16 @@ Et donc les testcontainers, sont des librairies java libres de sources, et perme
 
 2-4 : On a besoin de push les images car le but est de rendre accesibles nos images aux autres développeurs dans notre docker hub en public. 
 
+## TP3 - Ansible 
+3-1 : Le fichier inventories permet de dire à Ansible à quel serveur il doit se connecter et comment elles sont organisées.
+Les commandes de bases que l'on a vu dans cette première partie : 
+  1- ansible all -i inventories/setup.yml -m ping -> Permet de tester la connection au serveur que j'ai définie dans le fichier inventories.yml (en l'ocurrence le mien). 
+  2- ansible all -i inventories/setup.yml -m setup -a "filter=ansible_distribution*" --> le module setpup d'Ansible permet de collecter des données sur les hotes distants
+  le filtrer permet de filtrer les variables qui commence par ansible_distribution (par exemple : ansible_distribution": "Debian",
+        "ansible_distribution_file_parsed": true,
+        "ansible_distribution_file_path": "/etc/os-release",)
+  3- ansible all -i inventories/setup.yml -m apt -a "name=apache2 state=absent" --become --> cette commande sert à désinstaller le paquet apache2. 
+
+
+3-2 : Dans cette partie, la commande : ansible-galaxy init roles/docker, permet de créer un dossier roles contenant docker avec à l'intérieur un dossier tasks avec un main.yml. Dans ce fichier main.yml j'y ai mis l'ancien playbook.yml permettant l'installation de dockers sur mon server. Et le playbook devient un fichier qui va appeler le fichier main.yml qui est dans task. 
+Autrement dit, la ligne : roles: - docker, appelle le role "docker" et y effectue toutes les task qui sont contenus dedans. 

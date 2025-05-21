@@ -1,7 +1,7 @@
 services:
   backend:
     build:
-      context: ./backend #constrcution de l'image à l'aide du dossier backend 
+      context: ./simpleapi #constrcution de l'image à l'aide du dossier backend 
     container_name: backend-api #nom du conteneur au lancement 
     networks: #je met les deux réseaux avec lesquels il communique 
       - app-network

@@ -1,0 +1,12 @@
+- name: Deploy full Dockerized App
+  hosts: all
+  become: true
+  vars:
+    ansible_python_interpreter: /usr/bin/python3  # si besoin pour docker modules
+
+  roles:
+    - docker     # install Docker
+    - network    # create Docker network
+    - database   # run PostgreSQL
+    - app        # run app container
+    - proxy      # run reverse proxy

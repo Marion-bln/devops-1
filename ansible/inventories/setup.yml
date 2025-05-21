@@ -1,0 +1,8 @@
+all:
+ vars:
+   ansible_user: admin
+   ansible_ssh_private_key_file: /Users/marionboulan/Desktop/id_rsa #Chemin pour arriver à ma clé privée
+ children:
+   prod:
+     hosts: marion.boulan.takima.cloud #le nom de mon serveur 
+

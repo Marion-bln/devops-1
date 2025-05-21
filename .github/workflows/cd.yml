@@ -27,19 +27,19 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./Jour-1/simpleapi
-          tags: ${{ secrets.DOCKER_USERNAME }}/tp-postgres-simpleapi:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/tp-simpleapi:latest
           push: true
 
       - name: Build image and push database
         uses: docker/build-push-action@v6
         with:
-          context: ./Jour-1/backend
-          tags: ${{ secrets.DOCKER_USERNAME }}/tp-postgres-database:latest
+          context: ./Jour-1/database
+          tags: ${{ secrets.DOCKER_USERNAME }}/tp-database:latest
           push: true
 
       - name: Build image and push httpd
         uses: docker/build-push-action@v6
         with:
-          context: ./Jour-1/backend
-          tags: ${{ secrets.DOCKER_USERNAME }}/tp-postgres-httpd:latest
+          context: ./Jour-1/httpd
+          tags: ${{ secrets.DOCKER_USERNAME }}/tp-httpd:latest
           push: true

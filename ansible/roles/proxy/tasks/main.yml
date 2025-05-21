@@ -1,0 +1,10 @@
+- name: Run Apache HTTP server
+  docker_container:
+    name: apache-server
+    image: marionbln/tp-postgres-httpd:latest
+    state: started
+    restart_policy: no
+    ports:
+      - "80:80"
+    networks:
+      - name: app-network2
