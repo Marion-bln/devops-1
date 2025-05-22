@@ -81,3 +81,4 @@ Les commandes de bases que l'on a vu dans cette première partie :
 
 3-2 : Dans cette partie, la commande : ansible-galaxy init roles/docker, permet de créer un dossier roles contenant docker avec à l'intérieur un dossier tasks avec un main.yml. Dans ce fichier main.yml j'y ai mis l'ancien playbook.yml permettant l'installation de dockers sur mon server. Et le playbook devient un fichier qui va appeler le fichier main.yml qui est dans task. 
 Autrement dit, la ligne : roles: - docker, appelle le role "docker" et y effectue toutes les task qui sont contenus dedans. 
+

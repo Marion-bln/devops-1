@@ -1,18 +1,16 @@
 - name: Run backend API container
   docker_container:
     name: backend-api
-    image: marionbln/tp-simpleapi:latest
+    image: victoireepf/tp-simpleapi:latest
     pull: yes   # ← Image DockerHub
     state: started
-    restart_policy: on-failure
+    restart_policy: on-failure 
     networks:
       - name: app-network
       - name: app-network2
-      
-    depends_on:
-      - database
-    environment: #les variables se trouvent dans un fichier .env pour augmenter la sécurité
-      SPRING_DATASOURCE_URL: ${DB_URL}
-      SPRING_DATASOURCE_USERNAME: ${DB_USERNAME}
-      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+
+    env:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/db
+      SPRING_DATASOURCE_USERNAME: usr
+      SPRING_DATASOURCE_PASSWORD: pwd 
   

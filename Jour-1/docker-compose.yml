@@ -1,19 +1,18 @@
 services:
   backend:
     build:
-      context: ./simpleapi #constrcution de l'image à l'aide du dossier backend 
-    container_name: backend-api #nom du conteneur au lancement 
-    networks: #je met les deux réseaux avec lesquels il communique 
+      context: ./simpleapi
+    container_name: backend-api
+    networks:
       - app-network
-      - app-network2 
+      - app-network2
     depends_on:
-      - database #on attend que le conteneur de la base de données soit lancé avant de lancer le conteneur backend
-    environment: #les variables se trouvent dans un fichier .env pour augmenter la sécurité
+      - database
+    environment:
       SPRING_DATASOURCE_URL: ${DB_URL}
       SPRING_DATASOURCE_USERNAME: ${DB_USERNAME}
       SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
-
-    restart: on-failure:3
+    restart: on-failure  
 
   database:
     build:
@@ -22,9 +21,8 @@ services:
     networks:
       - app-network
     volumes:
-      - TP1_postgres_data:/var/lib/postgresql/data #permet la persistance des données
-    restart: 
-      unless-stopped
+      - TP1_postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
 
   httpd:
     build:
@@ -35,9 +33,8 @@ services:
     networks:
       - app-network2
     depends_on:
-      - backend #on attend le lancement du backend avant le serveur http 
-    restart: 
-      no 
+      - backend
+    restart: "no"
 
 networks:
   app-network:

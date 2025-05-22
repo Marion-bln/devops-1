@@ -1,7 +1,7 @@
 - name: Run PostgreSQL container
   docker_container:
     name: postgres
-    image: marionbln/tp-database
+    image: victoireepf/tp-database
     restart_policy: unless-stopped
     networks:
       - name: app-network
