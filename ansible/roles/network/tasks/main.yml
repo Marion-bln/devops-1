@@ -9,3 +9,9 @@
     name: app-network2
     driver : bridge
     state: present
+
+- name: Create app-network3
+  docker_network:
+    name: app-network3
+    driver : bridge
+    state: present

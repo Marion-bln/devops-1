@@ -6,9 +6,6 @@ on:
       - main
       - develop
   pull_request:
-    branches:
-      - main
-      - develop
 
 jobs:
   test-backend:
@@ -26,6 +23,18 @@ jobs:
       - name: Build and test with Maven
         working-directory: 'Jour-1/simpleapi'
         run: mvn clean verify
+      
+  sonarcloud:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
 
       - name: SonarCloud Scan
         working-directory: 'Jour-1/simpleapi'

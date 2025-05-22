@@ -1,0 +1,7 @@
+- name: Build and run front
+  docker_container:
+    name: front 
+    state: started
+    restart_policy: on-failure 
+    networks:
+      - name : app-network3

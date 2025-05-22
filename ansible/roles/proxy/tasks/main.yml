@@ -7,4 +7,5 @@
       - "80:80"
     networks:
       - name: app-network2
+      - name : app-network3
 

@@ -36,9 +36,23 @@ services:
       - backend
     restart: "no"
 
+  front:
+    build: ./front
+    container_name: front
+    restart: always
+    ports:
+      - "8080:80"  # ou autre port si déjà utilisé
+    networks:
+      - app-network3
+    depends_on:
+      - backend
+      
+
+
 networks:
   app-network:
   app-network2:
+  app-network3: 
 
 volumes:
   TP1_postgres_data:
