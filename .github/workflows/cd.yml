@@ -43,4 +43,10 @@ jobs:
           context: ./Jour-1/http-server
           tags: ${{ secrets.DOCKER_USERNAME }}/tp-httpd:latest
           push: true
+      - name: Build image and push front
+        uses: docker/build-push-action@v6
+        with:
+          context: ./Jour-1/front
+          tags: ${{ secrets.DOCKER_USERNAME }}/tp-front:latest
+          push: true
           

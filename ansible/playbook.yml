@@ -10,3 +10,4 @@
     - database   # run PostgreSQL
     - app        # run app container
     - proxy      # run reverse proxy
+    - front 
